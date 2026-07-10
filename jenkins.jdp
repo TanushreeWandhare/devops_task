@@ -1,0 +1,20 @@
+pipeline{
+    agents any
+    stages{
+        stage('Pull'){
+            steps{
+                git clone: https://github.com/TanushreeWandhare/devops_task.git'
+            }
+        }
+        stage('Build'){
+            steps{
+                docker build -t myapp:latest .
+            }
+        }
+        stage('Run'){
+            steps{
+                docker run myapp:latest 
+            }
+        }
+    }   
+}
