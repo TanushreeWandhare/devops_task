@@ -8,12 +8,26 @@ pipeline{
         }
         stage('Build'){
             steps{
-                docker build -t myapp:latest .
+                sh 'docker build -t tanushreew/myapp:latest .'
             }
         }
-        stage('Run'){
+
+        stage('Push'){
             steps{
-                docker run myapp:latest 
+                sh 'docker push tanushreew/myapp:latest'            
+            }
+        }
+        stage('k8s deployment'){
+            steps{
+                sh '''
+                kubectl apply -f deployment.yaml
+                kubectl apply -f service.yaml
+                '''         
+            }
+        }
+        stage('Verify'){
+            steps{
+                sh 'curl http://<service-ip>:<port>'
             }
         }
     }   
