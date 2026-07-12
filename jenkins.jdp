@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage('Pull'){
             steps{
-                git clone: https://github.com/TanushreeWandhare/devops_task.git'
+                sh 'git clone https://github.com/TanushreeWandhare/devops_task.git'
             }
         }
         stage('Build'){
