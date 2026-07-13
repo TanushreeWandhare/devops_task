@@ -36,10 +36,13 @@ pipeline{
                 '''         
             }
         }
-        stage('Verify'){
-            steps{
-                sh 'curl http://<service-ip>:<port>'
-            }
+        stage('Verify Deployment') {
+            steps {
+                sh '''
+                NODE_IP=$(minikube ip)
+                curl http://$NODE_IP:30080
+        '''
+            }   
         }
     }  
 } 
