@@ -16,6 +16,6 @@ spec:
     spec:
       containers:     
         - name: d-pod
-          image: tanushreew/devops:v1
+          image: tanushreew/myapp:latest
           ports:
             - containerPort: 80
