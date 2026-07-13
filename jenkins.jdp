@@ -27,7 +27,7 @@ pipeline{
         }
     }
 }
-        }
+        
         stage('k8s deployment'){
             steps{
                 sh '''
@@ -41,4 +41,5 @@ pipeline{
                 sh 'curl http://<service-ip>:<port>'
             }
         }
-    }   
+    }  
+} 
